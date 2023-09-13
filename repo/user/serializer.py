@@ -1,6 +1,8 @@
 from rest_framework import serializers
 from .models import User
+from drf_yasg import openapi
 
+user_id = openapi.Parameter(type=openapi.TYPE_STRING, name='user_id', in_=openapi.IN_QUERY, description='사용자 아이디')
 class UserSerializer(serializers.ModelSerializer):
   user_id = serializers.CharField(max_length=20, help_text="사용자 아이디", required=True)
   name = serializers.CharField(max_length=100, help_text="사용자 이름", required=True)
