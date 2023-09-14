@@ -21,3 +21,74 @@
 </ol>
 
 <h3>2. 개발 일정</h3>
+
+<h3>3. 개발 환경 및 언어</h3>
+
+<h3>4. UI</h3>
+<h4>4.1 목업 디자인</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>1. Login</th>
+      <th>2. Register</th>
+      <th>3. Main</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>      
+        
+  ![01_Login](https://github.com/jmp7911/runningMate/assets/37658328/7eaa9577-cbcb-4150-a77e-d3a1d100022f)
+      </td>
+      <td>
+        
+  ![02_Register](https://github.com/jmp7911/runningMate/assets/37658328/81b1344f-6655-4a2b-bacf-23cf9add7831)
+      </td>
+      <td>
+        
+![03_Main](https://github.com/jmp7911/runningMate/assets/37658328/f6617cab-945c-4c01-b343-6d616db4cd1a)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>4. Record page 1</th>
+      <th>5. Record page 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>      
+        
+  ![record_page](https://github.com/jmp7911/runningMate/assets/37658328/e67bf724-2b82-44a1-b08c-3656d99a9b54)
+      </td>
+      <td>
+  ![08_Record](https://github.com/jmp7911/runningMate/assets/37658328/3eb8e972-c3c3-4b7f-84a3-04056be68b07)
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>6. history list</th>
+      <th>7. history detail</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>      
+        
+  ![09_History list](https://github.com/jmp7911/runningMate/assets/37658328/0916ae33-1259-45e2-9503-05e2b670cde7)
+      </td>
+      <td>
+  ![history](https://github.com/jmp7911/runningMate/assets/37658328/d439b023-6d3a-4704-b2da-6b3c1e4e7aa4)
+      </td>
+    </tr>
+  </tbody>
+</table>
