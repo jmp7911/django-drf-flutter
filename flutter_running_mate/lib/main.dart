@@ -1,81 +1,114 @@
-import 'package:english_words/english_words.dart';
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
+
+Future<Album> createAlbum(String title) async {
+  final response = await http.post(
+    Uri.parse('https://jsonplaceholder.typicode.com/albums'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'title': title,
+    }),
+  );
+
+  if (response.statusCode == 201) {
+    // If the server did return a 201 CREATED response,
+    // then parse the JSON.
+    return Album.fromJson(jsonDecode(response.body));
+  } else {
+    // If the server did not return a 201 CREATED response,
+    // then throw an exception.
+    throw Exception('Failed to create album.');
+  }
+}
+
+class Album {
+  final int id;
+  final String title;
+
+  const Album({required this.id, required this.title});
+
+  factory Album.fromJson(Map<String, dynamic> json) {
+    return Album(
+      id: json['id'],
+      title: json['title'],
+    );
+  }
+}
+
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<MyApp> createState() {
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+  final TextEditingController _controller = TextEditingController();
+  Future<Album>? _futureAlbum;
+
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
-      child: MaterialApp(
-        title: 'Namer App',
-        theme: ThemeData(
-          useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
+    return MaterialApp(
+      title: 'Create Data Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Create Data Example'),
         ),
-        home: MyHomePage(),
+        body: Container(
+          alignment: Alignment.center,
+          padding: const EdgeInsets.all(8),
+          child: (_futureAlbum == null) ? buildColumn() : buildFutureBuilder(),
+        ),
       ),
     );
   }
-}
-class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
 
-  // ↓ Add this.
-  void getNext() {
-    current = WordPair.random();
-    notifyListeners();
-  }
-}
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    var pair = appState.current;                 // ← Add this.
-    return Scaffold(
-      body: Column(
-        children: [
-          Text('A random AWESOME idea:'),
-          BigCard(pair: pair),                // ← Change to this.
-          // ↓ Add this.
-          ElevatedButton(
-            onPressed: () {
-            appState.getNext();  // ← This instead of print().
+  Column buildColumn() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        TextField(
+          controller: _controller,
+          decoration: const InputDecoration(hintText: 'Enter Title'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              _futureAlbum = createAlbum(_controller.text);
+            });
           },
-          child: Text('Next'),
-          ),
-        ],
-      ),
+          child: const Text('Create Data'),
+        ),
+      ],
     );
   }
-}
 
-class BigCard extends StatelessWidget {
-  const BigCard({
-    super.key,
-    required this.pair,
-  });
+  FutureBuilder<Album> buildFutureBuilder() {
+    return FutureBuilder<Album>(
+      future: _futureAlbum,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Text(snapshot.data!.title);
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
 
-  final WordPair pair;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);       // ← Add this.
-    final style = theme.textTheme.displayMedium!.copyWith(
-      color: theme.colorScheme.onPrimary,
-    );
-    return Card(
-      color: theme.colorScheme.primary,    // ← And also this.
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Text(pair.asLowerCase, style: style),
-      ),
+        return const CircularProgressIndicator();
+      },
     );
   }
 }
