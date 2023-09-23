@@ -1,114 +1,122 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'dart:io' show Platform;
+
+import 'package:flutter/foundation.dart' show kIsWeb;
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:go_router/go_router.dart';
+// import 'package:window_size/window_size.dart';
 
-Future<Album> createAlbum(String title) async {
-  final response = await http.post(
-    Uri.parse('https://jsonplaceholder.typicode.com/albums'),
-    headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
-    },
-    body: jsonEncode(<String, String>{
-      'title': title,
-    }),
-  );
-
-  if (response.statusCode == 201) {
-    // If the server did return a 201 CREATED response,
-    // then parse the JSON.
-    return Album.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 201 CREATED response,
-    // then throw an exception.
-    throw Exception('Failed to create album.');
-  }
-}
-
-class Album {
-  final int id;
-  final String title;
-
-  const Album({required this.id, required this.title});
-
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      id: json['id'],
-      title: json['title'],
-    );
-  }
-}
+import 'src/login.dart';
+import 'src/http/mock_client.dart';
 
 void main() {
-  runApp(const MyApp());
+  // setupWindow();
+  runApp(const FormApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+const double windowWidth = 480;
+const double windowHeight = 854;
 
-  @override
-  State<MyApp> createState() {
-    return _MyAppState();
-  }
-}
+// void setupWindow() {
+//   if (!kIsWeb && (Platform.isWindows || Platform.isLinux || Platform.isMacOS)) {
+//     WidgetsFlutterBinding.ensureInitialized();
+//     setWindowTitle('Form Samples');
+//     setWindowMinSize(const Size(windowWidth, windowHeight));
+//     setWindowMaxSize(const Size(windowWidth, windowHeight));
+//     getCurrentScreen().then((screen) {
+//       setWindowFrame(Rect.fromCenter(
+//         center: screen!.frame.center,
+//         width: windowWidth,
+//         height: windowHeight,
+//       ));
+//     });
+//   }
+// }
 
-class _MyAppState extends State<MyApp> {
-  final TextEditingController _controller = TextEditingController();
-  Future<Album>? _futureAlbum;
+final demos = [
+  Demo(
+    name: 'Sign in with HTTP',
+    route: 'signin_http',
+    builder: (context) => SignInHttpDemo(
+      // This sample uses a mock HTTP client.
+      httpClient: mockClient,
+    ),
+  ),
+];
+
+final router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const HomePage(),
+      routes: [
+        for (final demo in demos)
+          GoRoute(
+            path: demo.route,
+            builder: (context, state) => demo.builder(context),
+          ),
+      ],
+    ),
+  ],
+);
+
+class FormApp extends StatelessWidget {
+  const FormApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Create Data Example',
+    return MaterialApp.router(
+      title: 'Form Samples',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorSchemeSeed: Colors.teal,
+        useMaterial3: true,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Create Data Example'),
-        ),
-        body: Container(
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(8),
-          child: (_futureAlbum == null) ? buildColumn() : buildFutureBuilder(),
-        ),
+      routerConfig: router,
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Form Samples'),
+      ),
+      body: ListView(
+        children: [...demos.map((d) => DemoTile(demo: d))],
       ),
     );
   }
+}
 
-  Column buildColumn() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        TextField(
-          controller: _controller,
-          decoration: const InputDecoration(hintText: 'Enter Title'),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            setState(() {
-              _futureAlbum = createAlbum(_controller.text);
-            });
-          },
-          child: const Text('Create Data'),
-        ),
-      ],
-    );
-  }
+class DemoTile extends StatelessWidget {
+  final Demo? demo;
 
-  FutureBuilder<Album> buildFutureBuilder() {
-    return FutureBuilder<Album>(
-      future: _futureAlbum,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Text(snapshot.data!.title);
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
-        }
+  const DemoTile({this.demo, super.key});
 
-        return const CircularProgressIndicator();
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(demo!.name),
+      onTap: () {
+        context.go('/${demo!.route}');
       },
     );
   }
 }
+
+class Demo {
+  final String name;
+  final String route;
+  final WidgetBuilder builder;
+
+  const Demo({required this.name, required this.route, required this.builder});
+}
+
