@@ -11,7 +11,8 @@ import 'package:go_router/go_router.dart';
 // import 'package:window_size/window_size.dart';
 
 import 'src/login.dart';
-import 'src/http/mock_client.dart';
+// import 'src/http/mock_client.dart';
+import 'src/http/http_client.dart';
 
 void main() {
   // setupWindow();
@@ -43,7 +44,7 @@ final demos = [
     route: 'signin_http',
     builder: (context) => SignInHttpDemo(
       // This sample uses a mock HTTP client.
-      httpClient: mockClient,
+      httpClient: client,
     ),
   ),
 ];

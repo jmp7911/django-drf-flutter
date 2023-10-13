@@ -17,6 +17,7 @@ class RecordListAPI(APIView):
     queryset = Record.objects.all()
     
     serializer = RecordSerializer(queryset, many=True)
+    print('recordList get')
     return Response(serializer.data)
 class RecordDetailAPI(APIView):
   @swagger_auto_schema(
@@ -38,4 +39,5 @@ class RecordDetailUpdateAPI(APIView):
     tags=['지정한 데이터를 입력합니다.'],request_body=RecordDetailSerializer,responses={200: 'Success'}
   )
   def post(self, request, user_id): 
+    print(request.data)
     pass

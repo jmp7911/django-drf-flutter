@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -24,7 +25,7 @@ class FormData {
 }
 
 class SignInHttpDemo extends StatefulWidget {
-  final http.Client? httpClient;
+  final HttpClient? httpClient;
 
   const SignInHttpDemo({
     this.httpClient,
@@ -77,16 +78,17 @@ class _SignInHttpDemoState extends State<SignInHttpDemo> {
                     child: const Text('Sign in'),
                     onPressed: () async {
                       // Use a JSON encoded string to send
-                      var result = await widget.httpClient!.post(
-                          Uri.parse('https://example.com/signin'),
-                          body: json.encode(formData.toJson()),
-                          headers: {'content-type': 'application/json'});
-
-                      _showDialog(switch (result.statusCode) {
-                        200 => 'Successfully signed in.',
-                        401 => 'Unable to sign in.',
-                        _ => 'Something went wrong. Please try again.'
-                      });
+                      try {
+                        HttpClientRequest request = await widget.httpClient!.get('localhost', 8000, '/api/record/admin');
+                        // Optionally set up headers...
+                        // Optionally write to the request object...
+                        HttpClientResponse response = await request.close();
+                        // Process the response
+                        final stringData = await response.transform(utf8.decoder).join();
+                        print(stringData);
+                      } finally {
+                        widget.httpClient!.close();
+                      }
                     },
                   ),
                 ].expand(
