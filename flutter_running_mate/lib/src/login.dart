@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_running_mate/src/http/http_client.dart';
+import 'package:flutter_running_mate/src/model/customer.dart';
 import 'package:http/http.dart' as http;
 import 'package:json_annotation/json_annotation.dart';
 
@@ -38,7 +40,8 @@ class SignInHttpDemo extends StatefulWidget {
 
 class _SignInHttpDemoState extends State<SignInHttpDemo> {
   FormData formData = FormData();
-
+  AuthAPI _authAPI = AuthAPI();
+    
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,18 +80,33 @@ class _SignInHttpDemoState extends State<SignInHttpDemo> {
                   TextButton(
                     child: const Text('Sign in'),
                     onPressed: () async {
+                      try{
+                          // var req = await _authAPI.health();
+                          var req = await _authAPI.login(formData.email,  formData.password);
+                          if(req.statusCode == 200){
+                            print(req.body);
+                            var customer = Customer.fromReqBody(req.body);
+                            customer.printAttributes();
+                        
+                          } else {
+                            print(req.body);
+                          }
+                        } on Exception catch (e){
+                          print(e.toString());
+                          print(context);
+                        }
                       // Use a JSON encoded string to send
-                      try {
-                        HttpClientRequest request = await widget.httpClient!.get('localhost', 8000, '/api/record/admin');
-                        // Optionally set up headers...
-                        // Optionally write to the request object...
-                        HttpClientResponse response = await request.close();
-                        // Process the response
-                        final stringData = await response.transform(utf8.decoder).join();
-                        print(stringData);
-                      } finally {
-                        widget.httpClient!.close();
-                      }
+                      // try {
+                      //   HttpClientRequest request = await widget.httpClient!.get('localhost', 8000, '/api/record/admin');
+                      //   // Optionally set up headers...
+                      //   // Optionally write to the request object...
+                      //   HttpClientResponse response = await request.close();
+                      //   // Process the response
+                      //   final stringData = await response.transform(utf8.decoder).join();
+                      //   print(stringData);
+                      // } finally {
+                      //   widget.httpClient!.close();
+                      // }
                     },
                   ),
                 ].expand(
