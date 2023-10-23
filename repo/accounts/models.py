@@ -32,6 +32,9 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     
     email = models.EmailField(max_length=30, unique=True, null=False, blank=False)
+    # access_token = models.CharField(max_length=255,null=True)
+    # refresh_token = models.CharField(max_length=255,null=True)
+    # expired = models.DateTimeField()
     is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

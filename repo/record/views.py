@@ -7,8 +7,10 @@ from rest_framework.views import APIView
 from .serializers import RecordSerializer, RecordDetailSerializer, path_user_id, RecordListSerializer, path_record_id
 from drf_yasg.utils import swagger_auto_schema
 
-from rest_framework.decorators import action
+from rest_framework.decorators import action, permission_classes
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.utils.decorators import method_decorator
+@permission_classes([IsAuthenticated])
 class RecordListAPI(APIView):
   @swagger_auto_schema(
     tags=['지정한 데이터의 리스트를 불러옵니다.'],manual_parameters=[path_user_id],responses={200: RecordListSerializer(many=True)}

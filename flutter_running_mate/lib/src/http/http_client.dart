@@ -1,23 +1,28 @@
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
+
 import 'package:http/http.dart' as http;
 
 var client = HttpClient();
 
 class BaseAPI{
-    static String token = '1171468886531839488';
+    static String access = '';
+    static String refresh = '';
     static String base = "http://localhost:8000"; 
     static var api = base + "/api";
     var customersPath = api + "/customers";
-    var authPath = api + "/accounts/login"; 
-    var logoutPath = api + "/accounts/logout";
+    var authPath = api + "/user/login/"; 
+    var refreshPath = api + "/user/token/refresh/"; 
     var recordPath = api + '/record';
     var csrfPath = base + '/csrf';
     
    // more routes
    Map<String,String> headers = {                           
-       "Content-Type": "application/json; charset=UTF-8" };                                      
-              
+    "Content-Type": "application/json; charset=UTF-8",
+    // "Authorization": "Bearer " + access
+   };                                      
+   
 }
 
 class AuthAPI extends BaseAPI {
@@ -47,22 +52,30 @@ class AuthAPI extends BaseAPI {
     return response;
   }
 
-  Future<http.Response> health() async {
-    http.Response response =
-        await http.post(Uri.parse(BaseAPI.api+'/accounts/apikey'), headers: super.headers);
+  Void? logout() {
+    BaseAPI.access = '';
+    BaseAPI.refresh = '';
 
-    return response;
+    
+    return null;
   }
 
-  Future<http.Response> logout(int id, String token) async {
-    var body = jsonEncode({'id': id, 'token': token});
+  Future<http.Response> getTokenRefresh() async {
+    var body = jsonEncode({'refresh': BaseAPI.refresh});
     
-    http.Response response = await http.post(Uri.parse(super.logoutPath),
+    http.Response response = await http.post(Uri.parse(super.refreshPath),
         headers: super.headers, body: body);
 
     return response;
   }
 
+  Future<http.Response> verifyToken() async {
+    var body = jsonEncode({'token': BaseAPI.access});
+    
+    http.Response response = await http.post(Uri.parse(super.refreshPath),
+        headers: super.headers, body: body);
 
+    return response;
+  }
 
 }
