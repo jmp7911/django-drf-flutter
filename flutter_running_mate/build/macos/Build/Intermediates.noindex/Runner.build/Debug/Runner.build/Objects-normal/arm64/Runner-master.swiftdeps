@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)"
+options: "14c242eb9637b79a6da2506213a4a651947eb18ca9432ec08892c8165fd54ef4"
+build_start_time: [1695167571, 224631000]
+build_end_time: [1695167574, 442817000]
+inputs:
+  "/Users/jimanpark/Documents/project/runningMate/flutter_running_mate/macos/Flutter/GeneratedPluginRegistrant.swift": [1695167555, 600189703]
+  "/Users/jimanpark/Documents/project/runningMate/flutter_running_mate/macos/Runner/AppDelegate.swift": [1694918940, 946722252]
+  "/Users/jimanpark/Documents/project/runningMate/flutter_running_mate/macos/Runner/MainFlutterWindow.swift": [1694918940, 949973883]
