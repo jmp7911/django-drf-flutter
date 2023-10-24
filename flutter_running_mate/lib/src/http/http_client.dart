@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
@@ -52,7 +51,7 @@ class AuthAPI extends BaseAPI {
     return response;
   }
 
-  Void? logout() {
+  logout() {
     BaseAPI.access = '';
     BaseAPI.refresh = '';
 
