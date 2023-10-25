@@ -18,7 +18,6 @@ class Record(models.Model):
   finish_time = models.DateTimeField(null=True)
   distance = models.FloatField(default=0, help_text='이동 거리')
   record = models.TimeField(null=True, help_text='기록 시간')
-
 class RecordDetail(models.Model):
   id = models.BigAutoField(primary_key=True)
   record_id = models.ForeignKey(Record, on_delete=models.CASCADE, help_text='Record 객체의 id')
