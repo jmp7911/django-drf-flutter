@@ -26,14 +26,6 @@ csslib
 2.19
 file:///Users/jimanpark/.pub-cache/hosted/pub.dev/csslib-1.0.0/
 file:///Users/jimanpark/.pub-cache/hosted/pub.dev/csslib-1.0.0/lib/
-cupertino_icons
-2.19
-file:///Users/jimanpark/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6/
-file:///Users/jimanpark/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6/lib/
-dio
-2.15
-file:///Users/jimanpark/.pub-cache/hosted/pub.dev/dio-5.3.3/
-file:///Users/jimanpark/.pub-cache/hosted/pub.dev/dio-5.3.3/lib/
 english_words
 2.12
 file:///Users/jimanpark/.pub-cache/hosted/pub.dev/english_words-4.0.0/
@@ -48,8 +40,8 @@ file:///Users/jimanpark/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3/
 file:///Users/jimanpark/.pub-cache/hosted/pub.dev/flutter_lints-2.0.3/lib/
 flutter_plugin_android_lifecycle
 2.19
-file:///Users/jimanpark/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.16/
-file:///Users/jimanpark/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.16/lib/
+file:///Users/jimanpark/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17/
+file:///Users/jimanpark/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17/lib/
 geolocator
 2.15
 file:///Users/jimanpark/.pub-cache/hosted/pub.dev/geolocator-10.1.0/
@@ -76,8 +68,8 @@ file:///Users/jimanpark/.pub-cache/hosted/pub.dev/geolocator_windows-0.2.1/
 file:///Users/jimanpark/.pub-cache/hosted/pub.dev/geolocator_windows-0.2.1/lib/
 go_router
 2.19
-file:///Users/jimanpark/.pub-cache/hosted/pub.dev/go_router-11.0.0/
-file:///Users/jimanpark/.pub-cache/hosted/pub.dev/go_router-11.0.0/lib/
+file:///Users/jimanpark/.pub-cache/hosted/pub.dev/go_router-12.0.0/
+file:///Users/jimanpark/.pub-cache/hosted/pub.dev/go_router-12.0.0/lib/
 google_maps
 2.12
 file:///Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps-6.3.0/
@@ -88,8 +80,8 @@ file:///Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter-2.5.0/
 file:///Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter-2.5.0/lib/
 google_maps_flutter_android
 2.19
-file:///Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.5.1/
-file:///Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.5.1/lib/
+file:///Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.5.2/
+file:///Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.5.2/lib/
 google_maps_flutter_ios
 2.19
 file:///Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter_ios-2.3.2/

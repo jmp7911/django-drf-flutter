@@ -44,18 +44,6 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "cupertino_icons",
-      "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/cupertino_icons-1.0.6",
-      "packageUri": "lib/",
-      "languageVersion": "2.19"
-    },
-    {
-      "name": "dio",
-      "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/dio-5.3.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.15"
-    },
-    {
       "name": "english_words",
       "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/english_words-4.0.0",
       "packageUri": "lib/",
@@ -81,7 +69,7 @@
     },
     {
       "name": "flutter_plugin_android_lifecycle",
-      "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.16",
+      "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -135,7 +123,7 @@
     },
     {
       "name": "go_router",
-      "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/go_router-11.0.0",
+      "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/go_router-12.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -153,7 +141,7 @@
     },
     {
       "name": "google_maps_flutter_android",
-      "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.5.1",
+      "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.5.2",
       "packageUri": "lib/",
       "languageVersion": "2.19"
     },
@@ -350,7 +338,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-10-24T08:12:36.082975Z",
+  "generated": "2023-10-25T01:50:48.940398Z",
   "generator": "pub",
   "generatorVersion": "3.1.2"
 }
