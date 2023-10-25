@@ -382,3 +382,4 @@ xcuserdata/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/android,python,django,flutter,xcode
+flutter_running_mate/lib/src/router/router.dart
