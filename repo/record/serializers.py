@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Product, Record, RecordDetail
 from drf_yasg import openapi
-
 user_id = openapi.Parameter('user_id', openapi.IN_PATH, description='user_id path', required=True, type=openapi.TYPE_STRING)
 
 class ProductSerializer(serializers.ModelSerializer) :
@@ -23,4 +22,3 @@ class RecordDetailSerializer(serializers.ModelSerializer) :
   class Meta :
     model = RecordDetail
     fields = '__all__'
-
