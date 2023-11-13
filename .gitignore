@@ -383,3 +383,8 @@ xcuserdata/
 
 # End of https://www.toptal.com/developers/gitignore/api/android,python,django,flutter,xcode
 flutter_running_mate/lib/src/router/router.dart
+img/
+flutter_running_mate/.dart_tool/package_config.json
+flutter_running_mate/.flutter-plugins-dependencies
+.DS_Store
+.gitignore
