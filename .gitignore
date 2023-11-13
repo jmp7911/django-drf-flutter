@@ -264,4 +264,27 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+<<<<<<< Updated upstream
 # End of https://www.toptal.com/developers/gitignore/api/python,django
+=======
+### Xcode ###
+## User settings
+xcuserdata/
+
+## Xcode 8 and earlier
+*.xcscmblueprint
+*.xccheckout
+
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+# End of https://www.toptal.com/developers/gitignore/api/android,python,django,flutter,xcode
+flutter_running_mate/lib/src/router/router.dart
+img/
+>>>>>>> Stashed changes
