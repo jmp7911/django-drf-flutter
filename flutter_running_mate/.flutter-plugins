@@ -1,4 +1,5 @@
 # This is a generated file; do not edit or check into version control.
+device_info_plus=/Users/jimanpark/.pub-cache/hosted/pub.dev/device_info_plus-9.1.0/
 flutter_plugin_android_lifecycle=/Users/jimanpark/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.17/
 geolocator=/Users/jimanpark/.pub-cache/hosted/pub.dev/geolocator-10.1.0/
 geolocator_android=/Users/jimanpark/.pub-cache/hosted/pub.dev/geolocator_android-4.3.1/
@@ -9,3 +10,4 @@ google_maps_flutter=/Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutt
 google_maps_flutter_android=/Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.5.2/
 google_maps_flutter_ios=/Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter_ios-2.3.2/
 google_maps_flutter_web=/Users/jimanpark/.pub-cache/hosted/pub.dev/google_maps_flutter_web-0.5.4+2/
+health=/Users/jimanpark/.pub-cache/hosted/pub.dev/health-8.0.0/
