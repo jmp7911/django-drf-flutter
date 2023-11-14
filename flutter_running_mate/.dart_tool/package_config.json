@@ -278,6 +278,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "page_view_indicators",
+      "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/page_view_indicators-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/jimanpark/.pub-cache/hosted/pub.dev/path-1.8.3",
       "packageUri": "lib/",
@@ -392,7 +398,7 @@
       "languageVersion": "3.1"
     }
   ],
-  "generated": "2023-11-14T01:06:24.765180Z",
+  "generated": "2023-11-14T02:26:27.737422Z",
   "generator": "pub",
   "generatorVersion": "3.1.2"
 }

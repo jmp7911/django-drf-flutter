@@ -5,20 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_running_mate/src/http/http_client.dart';
 
 import 'package:flutter_running_mate/src/model/customer.dart';
+import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_running_mate/src/appRouter.dart';
 
-@JsonSerializable()
-class FormData {
-  String? email;
-  String? password;
-
-  FormData({
-    this.email,
-    this.password,
-  });
-
-}
 
 class MainApp extends StatefulWidget {
   final HttpClient? httpClient;
@@ -32,47 +23,49 @@ class MainApp extends StatefulWidget {
   State<MainApp> createState() => _MainAppState();
 }
 
+
 class _MainAppState extends State<MainApp> {
-  FormData formData = FormData();
+  
   AuthAPI _authAPI = AuthAPI();
-    
+  
+  final List<Demo> items = demos.sublist(3);
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Running Mate'),
+        title: Text('Running Mate'),
       ),
-      body: GridView.count(
-        crossAxisCount: 2, // 열의 개수
-        children: <Widget>[
-          Container(
-            color: Colors.red,
-            child: Center(child: Text('셀 1')),
-          ),
-          Container(
-            color: Colors.green,
-            child: Center(child: Text('셀 2')),
-          ),
-          Container(
-            color: Colors.blue,
-            child: Center(child: Text('셀 3')),
-          ),
-          Container(
-            color: Colors.orange,
-            child: Center(child: Text('셀 4')),
-          ),
-          Container(
-            color: Colors.purple,
-            child: Center(child: Text('셀 5')),
-          ),
-          Container(
-            color: Colors.yellow,
-            child: Center(child: Text('셀 6')),
-          ),
-        ],
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, // 한 행에 표시할 항목 수
+          crossAxisSpacing: 8.0, // 항목 간의 가로 간격
+          mainAxisSpacing: 8.0, // 항목 간의 세로 간격
+        ),
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              // 여기에 탭했을 때 수행할 동작을 추가하세요.
+              context.go(items[index].route);
+              // 또는 Navigator를 사용하여 다른 화면으로 이동할 수도 있습니다.
+              // Navigator.push(context, MaterialPageRoute(builder: (context) => AnotherScreen()));
+            },
+            child: Container(
+              color: Colors.blue, // 각 항목의 배경색
+              child: Center(
+                child: Text(
+                  items[index].name,
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
+  
 
   void _showDialog(String message) {
     showDialog<void>(
@@ -89,3 +82,4 @@ class _MainAppState extends State<MainApp> {
     );
   }
 }
+
