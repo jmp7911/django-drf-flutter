@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_running_mate/src/mainapp.dart';
-import 'package:flutter_running_mate/src/router/router.dart';
+import 'package:flutter_running_mate/src/appRouter.dart';
 import 'package:http/http.dart' as http;
 import 'package:go_router/go_router.dart';
 // import 'package:window_size/window_size.dart';

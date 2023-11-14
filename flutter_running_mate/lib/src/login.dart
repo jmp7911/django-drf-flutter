@@ -7,7 +7,7 @@ import 'package:flutter_running_mate/src/model/customer.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter_running_mate/src/router/router.dart';
+import 'package:flutter_running_mate/src/appRouter.dart';
 
 part 'login.g.dart';
 
