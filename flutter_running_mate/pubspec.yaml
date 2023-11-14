@@ -39,6 +39,7 @@ dependencies:
   dio: ^5.3.3
   google_maps_flutter: ^2.5.0
   google_maps_flutter_web: ^0.5.4+2
+  health: ^8.0.0
 
 dev_dependencies:
   flutter_test:
